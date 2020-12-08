@@ -1,6 +1,9 @@
 const LaunchSelector = () => {
     return (
-        <p>Launch selector goes here</p>
+        <>
+            <button>Previous Launch</button>
+            <button>Next Launch</button>
+        </>
     )
 }
 
