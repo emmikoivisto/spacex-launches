@@ -18,10 +18,22 @@ const LaunchContainer = () => {
         getLaunch();
     }, [])  //use effect should only trigger only on mount
 
+    const incrementSelectedLaunch = () => {
+        if (selectedLaunchId < 90 ) {
+        setSelectedLaunchId(selectedLaunchId + 1)
+        }
+    }
+
+    const decrementSelectedLaunch = () => {
+        if (selectedLaunchId > 0 ) {
+        setSelectedLaunchId(selectedLaunchId - 1)
+        }
+    }
+
     return (
         <>
             <h1>SpaceX Launch details</h1>
-            <LaunchSelector />
+            <LaunchSelector incrementSelectedLaunch={incrementSelectedLaunch} decrementSelectedLaunch={decrementSelectedLaunch}/>
             <LaunchDetails />
         </>
     )
