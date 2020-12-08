@@ -16,7 +16,7 @@ const LaunchContainer = () => {
 
     useEffect(() => {
         getLaunch();
-    }, [])  //use effect should only trigger only on mount
+    }, [selectedLaunchId])  //use effect should only trigger only on mount. Here you specify what to trigger it again with
 
     const incrementSelectedLaunch = () => {
         if (selectedLaunchId < 90 ) {
@@ -33,7 +33,7 @@ const LaunchContainer = () => {
     return (
         <>
             <h1>SpaceX Launch details</h1>
-            <LaunchSelector incrementSelectedLaunch={incrementSelectedLaunch} decrementSelectedLaunch={decrementSelectedLaunch}/>
+            <LaunchSelector increment={incrementSelectedLaunch} decrement={decrementSelectedLaunch}/>
             <LaunchDetails />
         </>
     )

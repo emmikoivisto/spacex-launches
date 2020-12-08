@@ -1,9 +1,9 @@
-const LaunchSelector = ({incrementSelectedLaunch, decrementSelectedLaunch}) => {
+const LaunchSelector = ({increment, decrement}) => {
 
     return (
         <>
-            <button onClick={decrementSelectedLaunch}>Previous Launch</button>
-            <button onClick={incrementSelectedLaunch}>Next Launch</button>
+            <button onClick={decrement}>Previous Launch</button>
+            <button onClick={increment}>Next Launch</button>
         </>
     )
 }
