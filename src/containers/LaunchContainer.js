@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const LaunchContainer = () => {
 
     const [launch, setLaunch] = useState({});  //starts as an empty object
+    const [loaded, setLoaded] = useState(false); //this is to set the load to false on first render. Preventing error on load
     const [selectedLaunchId, setSelectedLaunchId] = useState(1);
 
     const getLaunch = () => {
@@ -12,6 +13,7 @@ const LaunchContainer = () => {
         fetch(`https://api.spacexdata.com/v3/launches/${selectedLaunchId}`)  //this last one is our state id
         .then(res => res.json())
         .then(data => setLaunch(data))  //sending it to be our launch
+        .then(() => setLoaded(true))
     }
 
     useEffect(() => {
@@ -33,8 +35,12 @@ const LaunchContainer = () => {
     return (
         <>
             <h1>SpaceX Launch details</h1>
-            <LaunchSelector increment={incrementSelectedLaunch} decrement={decrementSelectedLaunch}/>
-            <LaunchDetails />
+            <LaunchSelector 
+                increment={incrementSelectedLaunch} 
+                decrement={decrementSelectedLaunch}/>
+            <LaunchDetails 
+                launch={launch}
+                loaded={loaded}/>
         </>
     )
 
